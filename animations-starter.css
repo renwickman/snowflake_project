@@ -1,0 +1,188 @@
+/* Snowflakes */
+
+@keyframes fallingSnow {
+  0% {
+      top: -60px;
+      transform: translateX(-50%) rotate(0deg);
+  }
+  33% {
+      top: 30%;
+      transform: translateX(-50%) rotate(120deg);
+  }
+  66% {
+      top: 60%;
+      transform: translateX(-50%) rotate(240deg);
+  }
+  100% {
+      top: 90%;
+      transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+.snowflake-icon {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: -60px;
+  transform: translateX(-50%) rotate(0deg);
+  animation-name: fallingSnow;
+  animation-timing-function: linear;
+  animation-delay: 0;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  transform-origin: right;
+}
+
+.snowflake-1 {
+  left: 12.5%;
+  animation-duration: 6s;
+}
+
+.snowflake-2 {
+  left: 37.5%;
+  height: 45px;
+  width: 45px;
+  animation-duration: 8s;
+}
+
+.snowflake-3 {
+  left: 62.5%;
+  height: 55px;
+  width: 55px;
+  animation-duration: 10s;
+}
+
+.snowflake-4 {
+  left: 87.5%;
+  animation-duration: 9s;
+}
+
+.snowflake-5 {
+  left: 50%;
+  animation-duration: 7s;
+}
+
+.snowflake-1-delay {
+  animation-delay: 3.5s;
+}
+
+.snowflake-2-delay {
+  animation-delay: 3.5s;
+}
+
+.snowflake-3-delay {
+  animation-delay: 4.5s;
+}
+
+.snowflake-4-delay {
+  animation-delay: 4s;
+}
+
+.snowflake-5-delay {
+  animation-delay: 3s;
+}
+
+
+/* Card Flip */
+
+.card {
+  position: relative;
+  height: 640px;
+  width: 480px;
+  perspective: 1500px;
+  -webkit-perspective: 1500px;
+}
+
+.card-side {
+  height: 640px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: all .8s ease;
+  -webkit-transition: all .8 ease;
+}
+
+.card-front {
+  transform: rotateY(0deg);
+  -webkit-transition: rotateY(0deg);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.card:hover>.card-front {
+  transform: rotateY(-180deg);
+}
+
+.card:hover>.card-back {
+  transform: rotateY(0deg);
+}
+
+
+/* Back side animations */
+
+@keyframes colorShift {
+  0% {
+      color: var(--black);
+      font-size: 2.4rem;
+  }
+
+  50%{
+      color: var(--primary-light);
+      font-size: 2.8rem;
+  }
+
+  100% {
+      color: var(--black);
+      font-size: 2.4rem;
+  }
+}
+
+  .animated-text {
+    animation-name: colorShift;
+    animation-timing-function: linear;
+    animation-delay: 0; 
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-duration: .5s;
+
+    line-height: 3.6rem;
+}
+
+
+/* Fade in signature */
+
+@keyframes fadeInSignature {
+  from {
+    transform: translateX(140px) translateY(15px);
+  }
+  to {
+    transform: translateX(300px) translateY(15px);
+  }
+}
+
+.text-container {}
+
+.signature::before {
+  content: '';
+  position: relative;
+  display: inline-block;
+  height: 5rem;
+  width: 200px;
+
+  transform: translateX(140px) translateY(15px);
+  background-image: linear-gradient(to right, rgba(255, 0, 0 , 0) 0%, rgba(216, 240, 252, 1) 30%);
+}
+
+.card:hover .signature::before {
+  animation-name: fadeInSignature; 
+  animation-duration: 5s;
+  animation-delay: 2.8s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
